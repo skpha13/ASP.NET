@@ -8,51 +8,32 @@ namespace Homework01
 {
 	internal class Student
 	{
-		private static int idCounter = 0;
-		private int id;
-		private string lastName;
-		private string firstName;
-		private string dateOfBirth;
-		private List<Course> courses;
+		public static int idCounter { get; set; } = 0;
+		public int id { get; set; }
+		public string lastName { get; set; }
+		public string firstName { get; set; }
+		public string dateOfBirth { get; set; }
+		public List<Course> courses { get; set; }
 
-		public Student(string firstName = "Unnamed", string lastName = "Unnamed", string dateOfBirth = "Unknown", List<Course> courses = default) { 
-			this.lastName = lastName;
-			this.firstName = firstName;	
-			this.dateOfBirth = dateOfBirth;
-			this.id = idCounter++;
-			this.courses = courses;
-		}
-
-		// getters and setters with property
-		public string LastName { 
-			get { return lastName; }
-			set { this.lastName = value; }
-		}
-		public string FirstName
+		public Student()
 		{
-			get { return firstName; }
-			set { this.firstName= value; }
+			id = idCounter++;
+			courses = new List<Course>();
 		}
-		public string DateOfBirth
-		{
-			get { return dateOfBirth; }
-			set { this.dateOfBirth = value; }
-		}
-		public int ID
-		{
-			get { return id; }
-		}
-		public List<Course> Courses { get { return courses; } }
 
 		// ToString override
 		public void WriteLine()
 		{
 			Console.WriteLine(string.Format("ID: {0}\nFirst Name: {1}\nLast Name: {2}\nDate of birth: {3}\n", id, firstName, lastName, dateOfBirth));
-			Console.WriteLine($"\tCourses for student with ID:{id}\n");
-			for (int i = 0; i < courses.Count; i++)
-			{
-				Console.WriteLine(courses[i]);
+			if(courses.Count > 0 ) {
+				Console.WriteLine($"\tCourses for student with ID:{id}\n");
+				for (int i = 0; i < courses.Count; i++)
+				{
+					Console.WriteLine(courses[i]);
+				}
 			}
+			else Console.WriteLine("No current courses");
+			
 		}
 		public override String ToString()
 		{

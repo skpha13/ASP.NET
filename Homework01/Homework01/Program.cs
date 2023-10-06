@@ -5,6 +5,12 @@ List<Course> courses = new List<Course>();
 courses.Add(new Course());
 courses.Add(new Course());
 
-Student x = new Student("x","y","z",courses);
+Student x = new Student
+{
+	firstName = "Adrian",
+	lastName = "Mincu",
+	dateOfBirth = "13.06.2003",
+	courses = courses
+};
 
 x.WriteLine();
