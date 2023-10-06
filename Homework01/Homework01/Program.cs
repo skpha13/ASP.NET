@@ -1,6 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Homework01;
 
-Course x = new Course();
+List<Course> courses = new List<Course>();
+courses.Add(new Course());
+courses.Add(new Course());
 
-Console.WriteLine(x);
+Student x = new Student("x","y","z",courses);
+
+x.WriteLine();

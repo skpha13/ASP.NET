@@ -13,12 +13,14 @@ namespace Homework01
 		private string lastName;
 		private string firstName;
 		private string dateOfBirth;
+		private List<Course> courses;
 
-		public Student(string lastName = "Unnamed", string firstName = "Unnamed", string dateOfBirth = "Unknown") { 
+		public Student(string firstName = "Unnamed", string lastName = "Unnamed", string dateOfBirth = "Unknown", List<Course> courses = default) { 
 			this.lastName = lastName;
 			this.firstName = firstName;	
 			this.dateOfBirth = dateOfBirth;
 			this.id = idCounter++;
+			this.courses = courses;
 		}
 
 		// getters and setters with property
@@ -40,11 +42,21 @@ namespace Homework01
 		{
 			get { return id; }
 		}
+		public List<Course> Courses { get { return courses; } }
 
 		// ToString override
+		public void WriteLine()
+		{
+			Console.WriteLine(string.Format("ID: {0}\nFirst Name: {1}\nLast Name: {2}\nDate of birth: {3}\n", id, firstName, lastName, dateOfBirth));
+			Console.WriteLine($"\tCourses for student with ID:{id}\n");
+			for (int i = 0; i < courses.Count; i++)
+			{
+				Console.WriteLine(courses[i]);
+			}
+		}
 		public override String ToString()
 		{
-			return string.Format("ID: {0}\nFirst Name: {1}\nLast Name: {2}\nDate of birth: {3}\n",id,firstName,lastName,dateOfBirth);
+			return string.Format("ID: {0}\nFirst Name: {1}\nLast Name: {2}\nDate of birth: {3}\n", id, firstName, lastName, dateOfBirth);
 		}
 	}
 }
