@@ -50,7 +50,7 @@ namespace Lab2_24.Controllers
             return students;
         }
 
-		[HttpGet(Name = "/GetAllOrdered")]
+		[HttpGet("ordered")]
 		public List<Student> GetOrdered()
         {
 
