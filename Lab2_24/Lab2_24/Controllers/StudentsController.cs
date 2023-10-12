@@ -56,5 +56,15 @@ namespace Lab2_24.Controllers
 
             return students.OrderBy(student => student.Name).ToList(); ;
         }
+
+        [HttpDelete("{id}")]
+        public List<Student> DeleteId(int id)
+        {
+            for(int i = 0; i<students.Count; i++)
+            {
+                if (students[i].Id == id) students.Remove(students[i]); 
+            }
+            return students;
+        }
     }
 }
