@@ -60,10 +60,7 @@ namespace Lab2_24.Controllers
         [HttpDelete("{id}")]
         public List<Student> DeleteId(int id)
         {
-            for(int i = 0; i<students.Count; i++)
-            {
-                if (students[i].Id == id) students.Remove(students[i]); 
-            }
+            students.RemoveAll(student => student.Id == id);
             return students;
         }
     }
