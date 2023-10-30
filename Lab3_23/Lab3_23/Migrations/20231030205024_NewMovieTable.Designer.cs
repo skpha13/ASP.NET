@@ -4,6 +4,7 @@ using Lab3_23.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab3_23.Migrations
 {
     [DbContext(typeof(Lab3Context))]
-    partial class Lab3ContextModelSnapshot : ModelSnapshot
+    [Migration("20231030205024_NewMovieTable")]
+    partial class NewMovieTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,25 +53,6 @@ namespace Lab3_23.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Movies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("092877f3-9e02-4056-b69c-195503575573"),
-                            duration = 76.5f,
-                            name = "Scream",
-                            rating = 9
-                        },
-                        new
-                        {
-                            Id = new Guid("32055419-3225-47cb-84ae-5cb4029b2609"),
-                            DateTime = new DateTime(2023, 10, 30, 23, 8, 59, 678, DateTimeKind.Local).AddTicks(1727),
-                            LastModified = new DateTime(2023, 10, 30, 23, 8, 59, 678, DateTimeKind.Local).AddTicks(1781),
-                            description = "A movie in which the main actor manages to save the world",
-                            duration = 125.3f,
-                            name = "Top Gun: Maverick",
-                            rating = 10
-                        });
                 });
 
             modelBuilder.Entity("Lab3_23.Models.Student", b =>

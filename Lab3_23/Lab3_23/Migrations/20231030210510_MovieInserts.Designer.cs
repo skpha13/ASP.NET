@@ -4,6 +4,7 @@ using Lab3_23.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab3_23.Migrations
 {
     [DbContext(typeof(Lab3Context))]
-    partial class Lab3ContextModelSnapshot : ModelSnapshot
+    [Migration("20231030210510_MovieInserts")]
+    partial class MovieInserts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,16 +57,16 @@ namespace Lab3_23.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("092877f3-9e02-4056-b69c-195503575573"),
+                            Id = new Guid("56488344-3799-4a04-ab39-af92ce5e4f89"),
                             duration = 76.5f,
                             name = "Scream",
                             rating = 9
                         },
                         new
                         {
-                            Id = new Guid("32055419-3225-47cb-84ae-5cb4029b2609"),
-                            DateTime = new DateTime(2023, 10, 30, 23, 8, 59, 678, DateTimeKind.Local).AddTicks(1727),
-                            LastModified = new DateTime(2023, 10, 30, 23, 8, 59, 678, DateTimeKind.Local).AddTicks(1781),
+                            Id = new Guid("1ef520b5-fa13-4b9e-86d2-bb455db9c6e9"),
+                            DateTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             description = "A movie in which the main actor manages to save the world",
                             duration = 125.3f,
                             name = "Top Gun: Maverick",
