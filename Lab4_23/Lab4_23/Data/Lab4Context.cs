@@ -22,10 +22,10 @@ namespace Lab4_23.Data
 			   .WithOne(p => p.Post)
 			   .HasForeignKey(p => p.PostId);
 
-			modelBuilder.Entity<User>()
-				.HasOne(u => u.ONG)
-				.WithOne(u => u.User)
-				.HasForeignKey<User>(u => u.Id);
+			modelBuilder.Entity<ONG>()
+				.HasOne(u => u.User)
+				.WithOne(u => u.ONG)
+				.HasForeignKey<ONG>(u => u.Id);
 
 			// m-m relation between Posts and Needs
 			modelBuilder.Entity<PostHasNeeds>().HasKey(obj => new { obj.PostId, obj.NeedId });

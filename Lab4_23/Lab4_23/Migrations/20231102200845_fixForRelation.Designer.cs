@@ -4,6 +4,7 @@ using Lab4_23.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab4_23.Migrations
 {
     [DbContext(typeof(Lab4Context))]
-    partial class Lab4ContextModelSnapshot : ModelSnapshot
+    [Migration("20231102200845_fixForRelation")]
+    partial class fixForRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -208,17 +211,6 @@ namespace Lab4_23.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Lab4_23.Models.ONG", b =>
-                {
-                    b.HasOne("Lab4_23.Models.User", "User")
-                        .WithOne("ONG")
-                        .HasForeignKey("Lab4_23.Models.ONG", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Lab4_23.Models.ONGHasPosts", b =>
                 {
                     b.HasOne("Lab4_23.Models.Post", "Post")
@@ -268,6 +260,15 @@ namespace Lab4_23.Migrations
                     b.Navigation("Post");
                 });
 
+            modelBuilder.Entity("Lab4_23.Models.User", b =>
+                {
+                    b.HasOne("Lab4_23.Models.ONG", "ONG")
+                        .WithOne("User")
+                        .HasForeignKey("Lab4_23.Models.User", "Id");
+
+                    b.Navigation("ONG");
+                });
+
             modelBuilder.Entity("Lab4_23.Models.Need", b =>
                 {
                     b.Navigation("HasPosts");
@@ -276,6 +277,9 @@ namespace Lab4_23.Migrations
             modelBuilder.Entity("Lab4_23.Models.ONG", b =>
                 {
                     b.Navigation("HasPosts");
+
+                    b.Navigation("User")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Lab4_23.Models.Post", b =>
@@ -285,11 +289,6 @@ namespace Lab4_23.Migrations
                     b.Navigation("HasONG");
 
                     b.Navigation("Reviews");
-                });
-
-            modelBuilder.Entity("Lab4_23.Models.User", b =>
-                {
-                    b.Navigation("ONG");
                 });
 #pragma warning restore 612, 618
         }
