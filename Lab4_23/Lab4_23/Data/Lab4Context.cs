@@ -7,10 +7,10 @@ namespace Lab4_23.Data
 	{
 		public DbSet<User> Users { get; set; }
 		public DbSet<Post> Posts { get; set; }
-		public DbSet<ONG> ONGS { get; set; }
+		public DbSet<Ong> Ongs { get; set; }
 		public DbSet<Need> Needs { get; set; }
 		public DbSet<PostHasNeeds> PostHasNeedsRelation { get; set; }
-		public DbSet<ONGHasPosts> ONGHasPostsRelation { get; set; }
+		public DbSet<OngHasPosts> OngHasPostsRelation { get; set; }
 
 
 		public Lab4Context(DbContextOptions<Lab4Context> options): base(options) { }
@@ -22,10 +22,10 @@ namespace Lab4_23.Data
 			   .WithOne(p => p.Post)
 			   .HasForeignKey(p => p.PostId);
 
-			modelBuilder.Entity<ONG>()
+			modelBuilder.Entity<Ong>()
 				.HasOne(u => u.User)
-				.WithOne(u => u.ONG)
-				.HasForeignKey<ONG>(u => u.Id);
+				.WithOne(u => u.Ong)
+				.HasForeignKey<Ong>(u => u.Id);
 
 			// m-m relation between Posts and Needs
 			modelBuilder.Entity<PostHasNeeds>().HasKey(obj => new { obj.PostId, obj.NeedId });
@@ -38,14 +38,14 @@ namespace Lab4_23.Data
 				.WithMany(p => p.HasPosts)
 				.HasForeignKey(p => p.NeedId);
 
-			// m-m relation between ONG and Posts
-			modelBuilder.Entity<ONGHasPosts>().HasKey(obj => new { obj.ONGId, obj.PostId });
-			modelBuilder.Entity<ONGHasPosts>()
+			// m-m relation between Ong and Posts
+			modelBuilder.Entity<OngHasPosts>().HasKey(obj => new { ONGId = obj.OngId, obj.PostId });
+			modelBuilder.Entity<OngHasPosts>()
 				.HasOne(p => p.Post)
-				.WithMany(p => p.HasONG)
-				.HasForeignKey(p => p.ONGId);
-			modelBuilder.Entity<ONGHasPosts>()
-				.HasOne(p => p.ONG)
+				.WithMany(p => p.HasOng)
+				.HasForeignKey(p => p.OngId);
+			modelBuilder.Entity<OngHasPosts>()
+				.HasOne(p => p.Ong)
 				.WithMany(p => p.HasPosts)
 				.HasForeignKey(p => p.PostId);
 

@@ -13,6 +13,6 @@ namespace Lab4_23.Models
 		public string Description { get; set; }
 		public ICollection<Review> Reviews { get; set; }
 		public ICollection<PostHasNeeds> HasNeeds { get; set; }
-		public ICollection<ONGHasPosts> HasONG { get; set; }
+		public ICollection<OngHasPosts> HasOng { get; set; }
 	}
 }

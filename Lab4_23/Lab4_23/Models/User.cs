@@ -10,7 +10,7 @@ namespace Lab4_23.Models
 		[EmailAddress]
 		public string Email { get; set; }
 
-		public ONG? ONG { get; set; }
-		public Guid? ONGId { get; set; }
+		public Ong? Ong { get; set; }
+		public Guid? OngId { get; set; }
 	}
 }
