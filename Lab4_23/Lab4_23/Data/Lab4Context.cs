@@ -11,6 +11,7 @@ namespace Lab4_23.Data
 		public DbSet<Need> Needs { get; set; }
 		public DbSet<PostHasNeeds> PostHasNeedsRelation { get; set; }
 		public DbSet<OngHasPosts> OngHasPostsRelation { get; set; }
+		public DbSet<Review> Reviews { get; set; }
 
 
 		public Lab4Context(DbContextOptions<Lab4Context> options): base(options) { }

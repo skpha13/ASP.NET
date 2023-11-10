@@ -4,6 +4,7 @@ using Lab4_23.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab4_23.Migrations
 {
     [DbContext(typeof(Lab4Context))]
-    partial class Lab4ContextModelSnapshot : ModelSnapshot
+    [Migration("20231110161301_ReviewsNeedsOngsMadeNullable")]
+    partial class ReviewsNeedsOngsMadeNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -177,7 +180,7 @@ namespace Lab4_23.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Review");
                 });
 
             modelBuilder.Entity("Lab4_23.Models.User", b =>

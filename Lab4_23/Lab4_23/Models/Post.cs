@@ -11,8 +11,8 @@ namespace Lab4_23.Models
 		[Required]
 		[StringLength(1000)]
 		public string Description { get; set; }
-		public ICollection<Review> Reviews { get; set; }
-		public ICollection<PostHasNeeds> HasNeeds { get; set; }
-		public ICollection<OngHasPosts> HasOng { get; set; }
+		public ICollection<Review>? Reviews { get; set; }
+		public ICollection<PostHasNeeds>? HasNeeds { get; set; }
+		public ICollection<OngHasPosts>? HasOng { get; set; }
 	}
 }
