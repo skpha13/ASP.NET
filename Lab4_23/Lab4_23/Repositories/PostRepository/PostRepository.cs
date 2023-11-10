@@ -1,5 +1,6 @@
 ﻿using Lab4_23.Data;
 using Lab4_23.Models;
+using Lab4_23.Models.DTOs;
 using Lab4_23.Repositories.GenericRepository;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,8 +15,15 @@ public class PostRepository: GenericRepository<Post>, IPostRepository
         return _table.OrderBy(x => x.Title).ToList();
     }
 
-    public List<Post> GetAllIncludeReviews()
+    public List<PostDTO> GetAllIncludeReviews()
     {
-        return _table.Include(x => x.Reviews).ToList();
+        return _table.Include(x => x.Reviews)
+            .Select(post => new PostDTO
+            {
+                Title = post.Title,
+                Description = post.Description,
+                Reviews = post.Reviews.Select(review => new ReviewDTO(review)).ToList()
+            })
+            .ToList();
     }
 }

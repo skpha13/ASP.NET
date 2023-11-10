@@ -26,13 +26,15 @@ namespace Lab4_23.Controllers
         }
 
         [HttpGet("Posts")]
-        public async Task<List<Post>> GetPostsAsync([FromQuery] bool includeReviews = false)
+        public async Task<List<Post>> GetPostsAsync()
         {
-            if (includeReviews == false)  
-                return await _postRepository.GetAllAsync();
+            return await _postRepository.GetAllAsync();
+        }
 
-            // TODO: include doesnt work, how ???
-            return _postRepository.GetAllIncludeReviews();
+        [HttpGet("PostsIncludeReviews")]
+        public List<PostDTO> GetPostsIncludeReviews()
+        {
+            return  _postRepository.GetAllIncludeReviews();
         }
         
         [HttpGet("PostsWithJoin")]
