@@ -11,15 +11,11 @@ namespace Lab4_23.Controllers
     [ApiController]
     public class PostController : ControllerBase
     {
-        private readonly Lab4Context _lab4Context;
         private readonly IPostService _postService;
 
-        // TODO: how to make this dependency injection
-        public PostController(Lab4Context lab4Context)
+        public PostController(IPostService postService)
         {
-            _lab4Context = lab4Context;
-            // TODO: ask here if its ok 
-            _postService = new PostService(new PostRepository(lab4Context));
+            _postService = postService;
         }
 
         [HttpGet("Posts")]

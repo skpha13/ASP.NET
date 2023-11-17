@@ -11,4 +11,4 @@ public class MapperProfile : Profile
         CreateMap<Post, PostDTO>();
         CreateMap<PostDTO, Post>();
     }
-}
+} 
