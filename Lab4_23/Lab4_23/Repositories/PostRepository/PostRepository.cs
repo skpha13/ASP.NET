@@ -10,13 +10,16 @@ public class PostRepository: GenericRepository<Post>, IPostRepository
 {
     public PostRepository(Lab4Context lab4Context): base(lab4Context) { }
 
-    public List<Post> OrderByTitle(string title)
+    public List<PostDTO> OrderByTitle()
     {
-        return _table.OrderBy(x => x.Title).ToList();
+        List<PostDTO> posts = GetAllIncludeReviews().OrderBy(x => x.Title).ToList();
+   
+        return posts;
     }
 
     public List<PostDTO> GetAllIncludeReviews()
     {
+        // TODO: DTO with constructor of class
         return _table.Include(x => x.Reviews)
             .Select(post => new PostDTO
             {
@@ -25,5 +28,15 @@ public class PostRepository: GenericRepository<Post>, IPostRepository
                 Reviews = post.Reviews.Select(review => new ReviewDTO(review)).ToList()
             })
             .ToList();
+    }
+    
+    public List<PostReviewsDTO> GetAllWithJoin()
+    {
+        return  _lab4Context.Posts.Join(
+            _lab4Context.Reviews, 
+            post => post.Id, 
+            review => review.PostId,
+            (post, review) => new PostReviewsDTO(post, review)
+        ).ToList();
     }
 }

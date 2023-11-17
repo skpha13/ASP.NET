@@ -6,6 +6,7 @@ namespace Lab4_23.Repositories.PostRepository;
 
 public interface IPostRepository: IGenericRepository<Post>
 {
-    List<Post> OrderByTitle(string title);
+    List<PostDTO> OrderByTitle();
     List<PostDTO> GetAllIncludeReviews();
+    public List<PostReviewsDTO> GetAllWithJoin();
 }

@@ -2,6 +2,10 @@
 
 public class ReviewDTO
 {
+    public ReviewDTO() { 
+        Text = string.Empty;
+        NumberStars = 0;
+    }
     public ReviewDTO(Review r)
     {
         Text = r.Text;
