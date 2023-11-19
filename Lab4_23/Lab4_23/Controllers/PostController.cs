@@ -37,7 +37,7 @@ namespace Lab4_23.Controllers
         }
         
         [HttpPost("create")]
-        public async Task CreatePostAsync(Post p)
+        public async Task CreatePostAsync(PostDTO p)
         {
             await _postService.CreatePostAsync(p);
         }

@@ -9,6 +9,6 @@ public interface IPostService
     public List<PostDTO> OrderByTitle();
     public Task<List<Post>> GetPostsAsync();
     public List<PostReviewsDTO> GetAllWithJoin();
-    public Task CreatePostAsync(Post p);
+    public Task CreatePostAsync(PostDTO p);
 
 }
