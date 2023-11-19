@@ -43,7 +43,7 @@ namespace Lab4_23.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Needs");
+                    b.ToTable("Needs", (string)null);
                 });
 
             modelBuilder.Entity("Lab4_23.Models.Ong", b =>
@@ -71,7 +71,7 @@ namespace Lab4_23.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Ongs");
+                    b.ToTable("Ongs", (string)null);
                 });
 
             modelBuilder.Entity("Lab4_23.Models.OngHasPosts", b =>
@@ -96,7 +96,7 @@ namespace Lab4_23.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("OngHasPostsRelation");
+                    b.ToTable("OngHasPostsRelation", (string)null);
                 });
 
             modelBuilder.Entity("Lab4_23.Models.Post", b =>
@@ -123,7 +123,7 @@ namespace Lab4_23.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Posts");
+                    b.ToTable("Posts", (string)null);
                 });
 
             modelBuilder.Entity("Lab4_23.Models.PostHasNeeds", b =>
@@ -148,7 +148,7 @@ namespace Lab4_23.Migrations
 
                     b.HasIndex("NeedId");
 
-                    b.ToTable("PostHasNeedsRelation");
+                    b.ToTable("PostHasNeedsRelation", (string)null);
                 });
 
             modelBuilder.Entity("Lab4_23.Models.Review", b =>
@@ -177,7 +177,7 @@ namespace Lab4_23.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("Lab4_23.Models.User", b =>
@@ -205,7 +205,7 @@ namespace Lab4_23.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Lab4_23.Models.Ong", b =>

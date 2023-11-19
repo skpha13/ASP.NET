@@ -1,5 +1,6 @@
 using Lab4_23.Data;
 using Lab4_23.Helpers.Extensions;
+using Lab4_23.Helpers.Seeders;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ builder.Services.AddServices();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
+// SeedData(app);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -36,3 +38,13 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+/*void SeedData(IHost app)
+{
+	var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+	using (var scope = scopedFactory.CreateScope())
+	{
+		var service = scope.ServiceProvider.GetService<PostsSeeder>();
+		service.SeedInitialPosts();
+	}
+}*/
