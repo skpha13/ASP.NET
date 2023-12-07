@@ -1,6 +1,7 @@
 ﻿using Lab4_23.Data;
 using Lab4_23.Models;
 using Lab4_23.Models.DTOs;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,7 @@ namespace Lab4_23.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
+	[EnableCors("_myAllowSpecificOrigins")]
 	public class DatabaseController : ControllerBase
 	{
 		private readonly Lab4Context _lab4Context;

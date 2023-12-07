@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Lab4_23.Data;
 using Lab4_23.Models;
 using Lab4_23.Repositories.ReviewRepository;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace Lab4_23.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class ReviewController : ControllerBase
     {
         private readonly Lab4Context _lab4Context;

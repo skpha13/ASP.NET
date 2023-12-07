@@ -4,6 +4,19 @@ using Lab4_23.Helpers.Seeders;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy(name: MyAllowSpecificOrigins,
+		policy =>
+		{
+			policy.WithOrigins("http://localhost:4200", "https://localhost:4200")
+				.AllowAnyHeader()
+				.AllowAnyMethod()
+				.AllowCredentials();
+		});
+});
 
 // Add services to the container.
 
@@ -32,6 +45,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
