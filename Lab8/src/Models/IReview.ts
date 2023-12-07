@@ -1,4 +1,4 @@
 export interface IReview {
-  Text: string,
-  NumberStars: number
+  text: string,
+  numberStars: number
 }

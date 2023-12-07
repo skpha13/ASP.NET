@@ -1,8 +1,8 @@
 import {IReview} from "./IReview";
 
 export interface IPost {
-  Title: string,
-  Description: string
+  title: string,
+  description: string,
 
-  reviews?: IReview
+  reviews?: IReview[]
 }

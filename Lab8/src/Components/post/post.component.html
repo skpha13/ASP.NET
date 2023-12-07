@@ -2,6 +2,28 @@
   <h1>Posts Page</h1>
 
   <h2>All posts: </h2>
+  <div class="card-container" *ngIf="allPosts && allPosts.length > 0">
+    <mat-card *ngFor="let post of allPosts">
+      <mat-card-header>
+        <mat-card-title>{{ post.title }}</mat-card-title>
+        <mat-card-subtitle>{{ post.description }}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </div>
 
   <h2>All posts with reviews: </h2>
+  <div class="card-container" *ngIf="postsWithReviews && postsWithReviews.length > 0">
+    <mat-card *ngFor="let post of postsWithReviews" class="card">
+      <mat-card-header>
+        <mat-card-title>{{ post.title }}</mat-card-title>
+        <mat-card-subtitle>{{ post.description }}</mat-card-subtitle>
+        <mat-card-content>
+          <mat-card-content *ngFor="let review of post.reviews">
+            <p>{{review.text}}</p>
+            <p>{{review.numberStars}}</p>
+          </mat-card-content>
+        </mat-card-content>
+      </mat-card-header>
+    </mat-card>
+  </div>
 </div>
