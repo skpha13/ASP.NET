@@ -9,5 +9,5 @@ import config from '../formkit.config'
 const app = createApp(App)
 
 app.use(router)
-app.use(plugin, defaultConfig(config));
+app.use(plugin, defaultConfig(config))
 app.mount('#app')

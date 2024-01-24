@@ -8,7 +8,7 @@ const router = createRouter({
       path: '/',
       name: 'main',
       component: MainView
-    },
+    }
   ]
 })
 
