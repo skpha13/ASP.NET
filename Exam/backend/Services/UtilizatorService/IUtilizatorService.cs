@@ -7,6 +7,6 @@ public interface IUtilizatorService
 {
     Task<List<UserDTO>> GetAll();
     Task Create(CreateUserDTO test);
-    void Delete(Guid id);
+    Task Delete(Guid id);
     Task Update(UpdateUserDTO test);
 }

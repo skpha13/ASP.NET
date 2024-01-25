@@ -32,10 +32,10 @@ public class ProdusService : IProdusService
         await _produsRepository.SaveAsync();
     }
 
-    public void Delete(Guid id)
+    public async Task Delete(Guid id)
     {
         _produsRepository.DeleteById(id);
-        _produsRepository.SaveAsync();
+        await _produsRepository.SaveAsync();
     }
 
     public async Task Update(UpdateProdusDTO test)

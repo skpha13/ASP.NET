@@ -6,5 +6,5 @@ namespace backend.Services.ComandaProdusService;
 public interface IComandaProdusService
 {
     Task Create(CreateRelatieDTO test);
-    void Delete(Guid id);
+    Task Delete(Guid id);
 }

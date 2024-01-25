@@ -29,10 +29,10 @@ public class ComandaService : IComandaService
         await _comandaRepository.SaveAsync();
     }
 
-    public void Delete(Guid id)
+    public async Task Delete(Guid id)
     {
         _comandaRepository.DeleteById(id);
-        _comandaRepository.SaveAsync();
+        await _comandaRepository.SaveAsync();
     }
 
     public async Task Update(UpdateComandaDTO test)

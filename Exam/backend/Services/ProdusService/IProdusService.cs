@@ -7,6 +7,6 @@ public interface IProdusService
 {
     Task<List<ProdusDTO>> GetAll();
     Task Create(CreateProdusDTO test);
-    void Delete(Guid id);
+    Task Delete(Guid id);
     Task Update(UpdateProdusDTO test);
 }

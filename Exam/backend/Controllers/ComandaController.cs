@@ -42,10 +42,10 @@ namespace backend.Controllers
             return Ok();
         }
 
-        [HttpDelete("delete/${id}")]
-        public IActionResult DeleteComanda(Guid id)
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteComanda(Guid id)
         {
-            _comandaService.Delete(id);
+            await _comandaService.Delete(id);
             return Ok();
         }
     }

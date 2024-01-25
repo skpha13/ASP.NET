@@ -38,10 +38,10 @@ namespace backend.Controllers
             return Ok();
         }
 
-        [HttpDelete("delete/${id}")]
-        public IActionResult DeleteUtilizator(Guid id)
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteUtilizator(Guid id)
         {
-            _utilizatorService.Delete(id);
+            await _utilizatorService.Delete(id);
             return Ok();
         }
     }

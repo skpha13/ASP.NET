@@ -28,10 +28,10 @@ public class UtilizatorService : IUtilizatorService
         await _utilizatorRepository.SaveAsync();
     }
 
-    public void Delete(Guid id)
+    public async Task Delete(Guid id)
     {
         _utilizatorRepository.DeleteById(id);
-        _utilizatorRepository.SaveAsync();
+        await _utilizatorRepository.SaveAsync();
     }
 
     public async Task Update(UpdateUserDTO test)

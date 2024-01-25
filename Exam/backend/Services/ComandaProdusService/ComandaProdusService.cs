@@ -22,9 +22,9 @@ public class ComandaProdusService : IComandaProdusService
         await _comandaProdusRepository.SaveAsync();
     }
 
-    public void Delete(Guid id)
+    public async Task Delete(Guid id)
     {
         _comandaProdusRepository.DeleteById(id);
-        _comandaProdusRepository.SaveAsync();
+        await _comandaProdusRepository.SaveAsync();
     }
 }
