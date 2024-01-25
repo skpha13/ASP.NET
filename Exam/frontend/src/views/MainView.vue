@@ -11,24 +11,24 @@ interface IUtilizator {
 
 interface IComanda {
   id: string
-  favorita: string
+  favorita: boolean
 }
 
 // ======== USER FETCHING ========
-const comenzi = ref<IComanda[]>([])
-const areComenziLoaded = ref<boolean>(false)
-const routeNameComanda = 'Comanda'
+const utilizatori = ref<IUtilizator[]>([])
+const areUtilizatoriLoaded = ref<boolean>(false)
+const routeNameUtilizator = 'Utilizator'
 
-const fetchComenzi = async () => {
+const fetchUtilizatori = async () => {
   try {
-    let response = await axios.get(`${routeNameComanda}/all`)
-    comenzi.value = response.data
-    areComenziLoaded.value = true
+    let response = await axios.get(`${routeNameUtilizator}/all`)
+    utilizatori.value = response.data
+    areUtilizatoriLoaded.value = true
   } catch (error) {
     console.error(error)
   }
 }
-// ===============================
+// ==================================
 
 // ======== USER CREATE ========
 const createUser = async (payload: any) => {
@@ -72,22 +72,66 @@ const deleteUser = async (payload: any) => {
 }
 // =============================
 
-// ======== COMENZI FETCHING ========
-const utilizatori = ref<IUtilizator[]>([])
-const areUtilizatoriLoaded = ref<boolean>(false)
-const routeNameUtilizator = 'Utilizator'
 
-const fetchUtilizatori = async () => {
+
+
+// ======== COMENZI FETCHING ========
+const comenzi = ref<IComanda[]>([])
+const areComenziLoaded = ref<boolean>(false)
+const routeNameComanda = 'Comanda'
+
+const fetchComenzi = async () => {
   try {
-    let response = await axios.get(`${routeNameUtilizator}/all`)
-    utilizatori.value = response.data
-    areUtilizatoriLoaded.value = true
+    let response = await axios.get(`${routeNameComanda}/all`)
+    comenzi.value = response.data
+    areComenziLoaded.value = true
   } catch (error) {
     console.error(error)
   }
 }
-// ==================================
+// ===============================
 
+// ======== COMENZI CREATE ========
+const createComanda = async (payload: any) => {
+  try {
+    await axios.post(`${routeNameComanda}/create`, payload);
+  } catch (e) {
+    console.error(e);
+  }
+
+  areComenziLoaded.value = false;
+  await fetchComenzi();
+  areComenziLoaded.value = true;
+}
+// =============================
+
+// ======== COMENZI UPDATE ========
+const updateComanda = async (payload: any) => {
+  try {
+    await axios.patch(`${routeNameComanda}/update`, payload);
+  } catch (e) {
+    console.error(e);
+  }
+
+  areComenziLoaded.value = false;
+  await fetchComenzi();
+  areComenziLoaded.value = true;
+}
+// =============================
+
+// ======== COMENZI DELETE ========
+const deleteComanda = async (payload: any) => {
+  try {
+    await axios.delete(`${routeNameComanda}/delete/${payload.id}`);
+  } catch (e) {
+    console.error(e);
+  }
+
+  areComenziLoaded.value = false;
+  await fetchComenzi();
+  areComenziLoaded.value = true;
+}
+// =============================
 </script>
 
 <template>
@@ -105,7 +149,7 @@ const fetchUtilizatori = async () => {
   <h1 class="text-lg mb-2 mt-12">Creeaza Utilizator</h1>
   <FormKit type="form" @submit="createUser" submit-label="Create">
     <FormKit type="text" name="nume" placeholder="nume" />
-    <FormKit type="text" name="id"
+    <FormKit type="text" name="Utilizator ID"
              placeholder="5f679df0-dcab-499b-afc8-3288185f6976"
              validation="required"
              validation-visibilty="live"
@@ -141,4 +185,33 @@ const fetchUtilizatori = async () => {
       class="mb-2 border-b border-white p-2"
       v-for="item in comenzi" :key="item.id" :id="item.id" :favorita="item.favorita" />
   </div>
+
+  <h1 class="text-lg mb-2 mt-12">Creeaza Comenzi</h1>
+  <FormKit type="form" @submit="createComanda" submit-label="Create">
+    <FormKit type="text" name="Favorita" placeholder="true/false" />
+    <FormKit type="text" name="id"
+             placeholder="5f679df0-dcab-499b-afc8-3288185f6976"
+             validation="required"
+             validation-visibilty="live"
+    />
+  </FormKit>
+
+  <h1 class="text-lg mb-2 mt-12">Updateaza Comenzi</h1>
+  <FormKit type="form" @submit="deleteComanda" submit-label="Update">
+    <FormKit type="text" name="Favorita" placeholder="true/false" />
+    <FormKit type="text" name="id"
+             placeholder="5f679df0-dcab-499b-afc8-3288185f6976"
+             validation="required"
+             validation-visibilty="live"
+    />
+  </FormKit>
+
+  <h1 class="text-lg mb-2 mt-12">Sterge Comanda</h1>
+  <FormKit type="form" @submit="deleteComanda" submit-label="Sterge">
+    <FormKit type="text" name="id"
+             placeholder="5f679df0-dcab-499b-afc8-3288185f6976"
+             validation="required"
+             validation-visibilty="live"
+    />
+  </FormKit>
 </template>
