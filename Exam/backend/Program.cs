@@ -54,7 +54,16 @@ void SeedData(IHost app)
 	var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
 	using (var scope = scopedFactory.CreateScope())
 	{
-		var testService = scope.ServiceProvider.GetService<TestSeeder>();
-		testService.SeedInitialTests();
+		var produsSeeder = scope.ServiceProvider.GetService<ProdusSeeder>();
+		produsSeeder.SeedInitialProduse();
+		
+		var userService = scope.ServiceProvider.GetService<UtilizatorSeeder>();
+		userService.SeedInitialUsers();
+		
+		var comandaService = scope.ServiceProvider.GetService<ComandaSeeder>();
+		comandaService.SeedInitialComenzi();
+
+		var relatieService = scope.ServiceProvider.GetService<RelatieSeeder>();
+		relatieService.SeedInitialRelatii();
 	}
 }
