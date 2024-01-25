@@ -2,7 +2,7 @@
 using backend.Models;
 using backend.Repositories.GenericRepository;
 
-namespace backend.Repositories.TestRepository;
+namespace backend.Repositories.UtilizatorRepository;
 
 public class UtilizatorRepository : GenericRepository<Utilizator>, IUtilizatorRepository
 {

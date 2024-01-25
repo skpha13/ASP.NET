@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using backend.Models;
 using backend.Models.DTOs.UserDTOs;
-using backend.Repositories.TestRepository;
+using backend.Repositories.UtilizatorRepository;
 
 namespace backend.Services.TestService;
 
